@@ -1,0 +1,67 @@
+/* pages/phone-fix/phone-fix.wxss */
+/* pages/component/nav/nav.wxss */
+.VerticalNav.nav {
+    width: 200rpx;
+    white-space: initial;
+}
+
+.VerticalNav.nav .cu-item {
+    width: 100%;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin: 0;
+    border: none;
+    height: 50px;
+    position: relative;
+}
+
+.VerticalNav.nav .cu-item.cur {
+    background-color: #fff;
+}
+
+.VerticalNav.nav .cu-item.cur::after {
+    content: "";
+    width: 8rpx;
+    height: 30rpx;
+    border-radius: 10rpx 0 0 10rpx;
+    position: absolute;
+    background-color: currentColor;
+    top: 0;
+    right: 0rpx;
+    bottom: 0;
+    margin: auto;
+}
+
+.VerticalBox {
+    display: flex;
+}
+
+.VerticalMain {
+    padding: 0 20rpx;
+    background-color: #fff;
+    height: 85vh;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.item-index {
+    height: 50rpx;
+    width: 50rpx;
+    margin: 0 10rpx;
+    line-height: 50rpx;
+    text-align: center;
+    border-radius: 25rpx;
+    background-color: #f1f1f1;
+}
+
+.item-name {
+    font-size: 40rpx;
+}

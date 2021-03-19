@@ -1,0 +1,45 @@
+/* pages/my/order/order.wxss */
+.order{
+    background-color: #fff;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
+
+.item-detail{
+    display: flex;
+    justify-content:space-between;
+    border-bottom: solid 1px rgb(221, 214, 214);
+}
+
+.detail-left{
+    color:black;
+}
+
+.detail-left image{
+    width: 190rpx;
+    height: 190rpx;
+    border: solid black 1px;
+    margin: 10rpx;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+}
+
+.detail-middle{
+    margin: 10rpx;
+    min-width: 350rpx;
+}
+
+.detail-right{
+    margin: 10rpx;
+    text-align: right;
+}
+
+.item-title{
+    font-size: 30rpx;
+}
+
+.item-model{
+    font-size: 25prx;
+    color: grey;
+    margin-top: 10rpx;
+}

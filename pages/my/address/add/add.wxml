@@ -1,0 +1,27 @@
+<form class="address-form" bindsubmit="saveAddress">
+    <view class="cu-form-group">
+        <view class="title">收货人</view>
+        <input placeholder="请输入收货人姓名" name="receiverName"></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">手机号码</view>
+        <input placeholder="请输入收货人手机号码" name="mobile" value="{{phoneNum}}" type="number" maxlength="11"></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">所在地区</view>
+        <picker mode="region" bindchange="RegionChange" name="area" value="{{region}}" custom-item="{{customItem}}">
+            <view class="picker">
+                {{region[0]}}，{{region[1]}}，{{region[2]}}
+            </view>
+        </picker>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">街道地址</view>
+        <input placeholder="请输入街道地址" name="streetAddress"></input>
+    </view>
+
+    <view class="padding fix-bottom">
+        <button form-type="submit" class="cu-btn block line-orange lg round">
+            保存</button>
+    </view>
+</form>

@@ -1,0 +1,20 @@
+/* pages/my/adress/adress.wxss */
+.fix-bottom{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.address-title{
+    font-size: 35rpx!important;
+}
+
+.cu-tag{
+    font-size: 20rpx;
+}
+
+.edit-btn{
+    font-size: 50rpx;
+}

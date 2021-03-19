@@ -1,0 +1,43 @@
+<page-meta>
+  <navigation-bar title="商城" />
+</page-meta>
+
+<!-- 轮播 -->
+<swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 宫格菜单 -->
+<view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+  <view class="cu-item"bindtap="goto" data-id="0">
+    <view class="cuIcon-mobilefill text-mauve">
+    </view>
+    <text>手机</text>
+  </view>
+  <view class="cu-item"bindtap="goto" data-id="1">
+    <view class="cuIcon-mobilefill text-grey">
+    </view>
+    <text>平板</text>
+  </view>
+  <view class="cu-item"bindtap="goto" data-id="2">
+    <view class="cuIcon-discoverfill text-olive">
+    </view>
+    <text>手机配件</text>
+  </view>
+  <view class="cu-item"bindtap="goto" data-id="3">
+    <view class="cuIcon-flashbuyfill text-red">
+    </view>
+    <text>二手商品</text>
+  </view>
+</view>
+
+<view class="clean-items">
+    <view class="clean-item" wx:for="{{commodityList}}" wx:key="id" bindtap="toDetail" data-id="{{item.id}}">
+        <image src="{{item.url}}" mode="aspectFill" />
+        <view class="desc oneLine">{{item.desc}}</view>
+        <view class="item-title">{{item.name}}</view>
+        <view class="item-price">￥{{item.price}}</view>
+    </view>
+</view>

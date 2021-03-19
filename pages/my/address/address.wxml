@@ -1,0 +1,23 @@
+<view wx:for="{{addresses}}" wx:key="streetAddress">
+    <view class="cu-bar bg-white solid-bottom">
+        <view class="cu-item padding">
+            <view class="address-title">
+                <text class="name">{{item.receiverName}}</text>
+                <text class="phone margin-left-sm">{{item.mobile}}</text>
+                <view class="cu-tag round bg-red text-white sm margin-left" wx:if="{{item.state == 1}}">默认</view>
+            </view>
+            <view class="twoLine margin-top-xs">
+                {{item.area}} {{item.streetAddress}}
+            </view>
+        </view>
+        <view class="cuIcon-write edit-btn padding-right-sm" bind:tap="toEdit" data-id="{{item.id}}"></view>
+    </view>
+</view>
+
+<!-- 占位盒子 -->
+<view style="height:150rpx"></view>
+
+<view class="padding fix-bottom">
+    <button class="cu-btn block line-orange lg round" bind:tap="toAdd">
+        添加收货地址</button>
+</view>

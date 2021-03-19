@@ -1,0 +1,47 @@
+<page-meta>
+  <navigation-bar title="购物车" />
+</page-meta>
+
+<view class="top-bar">
+  <text class="cuIcon-locationfill" bind:tap="toAddress">{{location?location:"添加收货地址"}}</text>
+  <button class="cu-btn sm round" bind:tap="manage">{{manage?"完成":"管理"}}</button>
+</view>
+
+<!-- 占位元素 -->
+<view style="height:60rpx"></view>
+
+<checkbox-group bindchange="chooseItem">
+  <view wx:for="{{cartMap}}" wx:key="specificationName">
+    <view class="car-item">
+      <view class="check">
+        <checkbox class="round red margin-top margin-right sm" value="{{item.specificationId}}"
+          checked="{{allChecked}}"></checkbox>
+      </view>
+      <view class="img">
+        <image src="{{item.specificationImg}}" mode='aspectFill'></image>
+      </view>
+      <view class="desc">
+        <view class="car-content">{{item.productName}}</view>
+        <view class="item-detail">{{item.specificationName}}</view>
+        <view class="bot-content">
+          <view class="price">￥{{item.unitPrice}}</view>
+          <view class="car-btn"><button class="cu-btn sm" data-id="{{item.specificationId}}" data-num="{{item.num}}"
+              bind:tap="add">+</button><button class="cu-btn sm">{{item.num}}</button><button class="cu-btn sm"
+              data-id="{{item.specificationId}}" data-num="{{item.num}}" bind:tap="reduce">-</button></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</checkbox-group>
+
+<view class="bot"></view>
+
+<view class="bot-bar">
+  <checkbox-group class="bot-check" bindchange="checkAll">
+    <checkbox class="round red margin-top margin-right" checked="{{checkAll}}"></checkbox>
+  </checkbox-group>
+  <view class="bot-all">全选</view>
+  <view class="total-num" wx:if="{{!manage}}">总计:<text class="font">￥{{allPrice}}</text></view>
+  <view class="bot-btn" wx:if="{{!manage}}" bind:tap="submit">去结算</view>
+  <view class="delete-btn cu-btn lines-red round" wx:if="{{manage}}" bind:tap="delete">删除</view>
+</view>

@@ -1,0 +1,24 @@
+<page-meta>
+  <navigation-bar title="{{title}}" />
+</page-meta>
+
+<!-- <scroll-view scroll-x class="bg-white nav fixed">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{10}}" wx:key="name"
+      bindtap="tabSelect" data-id="{{index}}">
+      tab-{{index}}
+    </view>
+  </view>
+</scroll-view> -->
+
+<!-- 占位元素 -->
+<!-- <view style="margin-top:110rpx"></view> -->
+
+<view class="clean-items">
+    <view class="clean-item" wx:for="{{commodityList}}" wx:key="id" bindtap="toDetail" data-id="{{item.id}}">
+        <image src="{{item.url}}" mode="aspectFill" />
+        <view class="desc oneLine">{{item.desc}}</view>
+        <view class="item-title">{{item.name}}</view>
+        <view class="item-price">￥{{item.price}}</view>
+    </view>
+</view>

@@ -1,0 +1,93 @@
+<!--pages/detile/detile.wxml-->
+<page-meta>
+  <navigation-bar title="商品详情" />
+</page-meta>
+
+<swiper class="detile-swiper" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key="url" class="item">
+    <image src="{{item}}" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+
+<view class="price"><text class="price-sy">￥</text><text class="price-num">{{price}}</text></view>
+<view class="title">{{title}}</view>
+<view class="addition">{{describ}}</view>
+<view class="banner">
+  <image src="https://data.putiyue.com/cs/detile/service-bar.png" mode="widthFix" />
+</view>
+
+<!-- 底部模态窗口 -->
+<view class="cu-bar bg-white choose-bar" bindtap="showModal">
+  <view class="action">
+    <text>已选</text>
+  </view>
+  <view class="action" style="color:black;">
+    <text>{{modelName}}</text>
+  </view>
+  <view class="action">
+    <view class="cuIcon-right"></view>
+  </view>
+</view>
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <!-- 顶条 -->
+    <view class="cu-bar bg-white">
+      <view class="action modal-img">
+        <image src="{{choosedImg?choosedImg:surfaceImg}}" />
+      </view>
+      <view class="modal-price">
+        <text class="price-sy" wx:if="{{nowPrice}}">￥</text><text class="price-num">{{nowPrice}}</text>
+      </view>
+      <view class="action text-grey modal-close" bindtap="hideModal">
+        <view class="cuIcon-close"></view>
+      </view>
+    </view>
+    <!-- 内容部分 -->
+    <view class="modal-content">
+      <view class="cutLine"></view>
+      <view><text class="modal-lable">规格</text></view>
+      <view wx:for="{{specifications}}" wx:key="name">
+        <view class="modal-item"><button class="cu-btn {{item.name == modelName?'red-border':''}}" data-id="{{item.id}}"
+            data-name="{{item.name}}" data-price="{{item.currentPrice}}" data-img="{{item.img}}"
+            bind:tap="chooseModel">{{item.name}}</button></view>
+      </view>
+      <view class="cutLine"></view>
+      <view class="modal-cont">
+        <text class="modal-lable">购买数量</text>
+        <view class="modal-btn">
+          <button class="cu-btn num-reduce" bind:tap="subtract">-</button>
+          <button class="cu-btn num">{{count}}</button>
+          <button class="cu-btn num-add" bind:tap="add">+</button>
+        </view>
+      </view>
+      <view class="cutLine"></view>
+      <view class="zhanwei"></view>
+    </view>
+  </view>
+</view>
+
+<view class="xiangqing">——宝贝详情——</view>
+
+<view class="detile-img">
+  <view wx:for="{{introImgs}}" wx:key="item">
+    <image src="{{item}}" mode="widthFix" />
+  </view>
+</view>
+
+<view class="zhanwei"></view>
+
+<!-- 底部操作条 -->
+<view class="cu-bar bg-white tabbar border shop bottom-bar">
+  <button class="action" open-type="contact">
+    <view class="cuIcon-service text-green">
+    </view>
+    客服
+  </button>
+  <view class="action" bind:tap="toCar">
+    <view class="cuIcon-cart">
+    </view>
+    购物车
+  </view>
+  <view class="bg-orange submit" bind:tap="addToCar">加入购物车</view>
+  <view class="bg-red submit" bind:tap="buyNow">立即订购</view>
+</view>

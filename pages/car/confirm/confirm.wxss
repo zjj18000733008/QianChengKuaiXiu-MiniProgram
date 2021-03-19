@@ -1,0 +1,90 @@
+/* pages/car/confirm/confirm.wxss */
+.location{
+    display: flex;
+    align-items:center;
+    height: 150rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.middle{
+    min-width: 550rpx;
+}
+
+.icons{
+    font-size: 50rpx;
+}
+
+.title{
+    font-size: 35rpx;
+}
+
+.order{
+    background-color: #fff;
+    padding: 10rpx;
+    border-radius: 10rpx;
+}
+
+.item-detail{
+    display: flex;
+    justify-content:space-between;
+    border-bottom: solid 1px rgb(221, 214, 214);
+}
+
+.detail-left{
+    color:black;
+}
+
+.detail-left image{
+    width: 190rpx;
+    height: 190rpx;
+    border: solid black 1px;
+    margin: 10rpx;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+}
+
+.detail-middle{
+    margin: 10rpx;
+    min-width: 350rpx;
+}
+
+.detail-right{
+    margin: 10rpx;
+    text-align: right;
+}
+
+.item-title{
+    font-size: 30rpx;
+}
+
+.item-model{
+    font-size: 25prx;
+    color: grey;
+    margin-top: 10rpx;
+}
+
+.fix-bottom{
+    position: fixed;
+    bottom:0;
+    left: 0;
+}
+
+.bottom-bar{
+    width: 750rpx;
+    height: 100rpx;
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.text-money{
+    font-size: 40rpx;
+    color: red;
+}
+
+.text-all{
+    color: grey;
+    font-size: 25rpx;
+}

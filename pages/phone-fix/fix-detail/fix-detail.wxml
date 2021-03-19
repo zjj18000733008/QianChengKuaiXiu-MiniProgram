@@ -1,0 +1,70 @@
+<!--pages/phone-fix/fix-detail/fix-detail.wxml-->
+<page-meta>
+  <navigation-bar title="故障选择" />
+</page-meta>
+
+<!-- 顶部显示型号框 -->
+<view class="model margin-sm shadow-lg" bind:tap="chooseAddress">
+    <view class="cuIcon-mobilefill padding-xs icons text-grey"></view>
+    <view class="middle">
+        <text>您的选择的手机型号：</text>
+        <text>{{model}}</text>
+    </view>
+    <view class="right">
+        <button class="cu-btn" bind:tap="back">更换</button>
+    </view>
+</view>
+
+<!-- 中部选择故障类型框 -->
+<radio-group class="block" bindchange="choose">
+    <view class="cu-list menu card-menu shadow-lg radius margin-top" wx:for="{{all}}" wx:key="none">
+        <view class="cu-bar bg-white solid-bottom">
+            <view class="action">
+                <text class="cuIcon-title"></text>{{item.name}}
+            </view>
+        </view>
+        <view class="cu-item" wx:for="{{item.repairMalfunctionItems}}" wx:key="none">
+            <view class="title">{{item.itemName}}</view>
+            <radio class="radio black" value="{{item.malfunctionId}}"></radio>
+        </view>
+    </view>
+</radio-group>
+
+<!-- 底部预计价铬框，联系维修按钮 -->
+<view class="bottom-bar">
+    <view>
+        <text>预计维修价铬：</text><text class="money">￥{{nowPrice}}</text>
+    </view>
+    <button class="cu-btn lines-red round" disabled="{{!checked}}" bind:tap="showModal"
+        data-target="Modal">联系维修</button>
+</view>
+
+<!-- 弹窗 -->
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">联系维修</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl">
+            <!-- 弹窗内内容 -->
+            <form bindsubmit="submit">
+                <view class="cu-form-group">
+                    <view class="title">姓名</view>
+                    <input placeholder="请输入您的姓名" name="name"></input>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title">电话</view>
+                    <input placeholder="请输入您的电话号码" name="phone" value="{{phoneNum}}" type="number"
+                        maxlength="11"></input>
+                </view>
+                <button form-type="submit" class="cu-btn block bg-orange lg margin-top">
+                    留下联系方式(推荐)</button>
+                    <button open-type="contact" class="cu-btn block lines-orange lg margin-top" bind:tap="hideModal">
+                    联系客服</button>
+            </form>
+        </view>
+    </view>
+</view>

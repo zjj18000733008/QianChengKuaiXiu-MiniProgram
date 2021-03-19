@@ -1,0 +1,67 @@
+<page-meta>
+  <navigation-bar title="我的订单" />
+</page-meta>
+
+<scroll-view scroll-x class="bg-white nav fixed">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{tabList}}" wx:key="name"
+      bindtap="tabSelect" data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 占位元素 -->
+<view style="margin-top:110rpx"></view>
+
+<view wx:for="{{orders}}" wx:key="orderId">
+  <view class="order margin-sm">
+    <view class="items" wx:for="{{item.orderItemVos}}" wx:key="specificationId">
+      <view class="item-detail">
+        <view class="detail-left">
+          <image src="{{item.img}}" mode='aspectFill'></image>
+        </view>
+        <view class="detail-middle">
+          <view class="item-title">{{item.productName}}</view>
+          <view class="item-model">{{item.specificationName}}</view>
+        </view>
+        <view class="detail-right">
+          <view class="item-price">￥{{item.unitPrice}}</view>
+          <view class="item-num text-grey">x{{item.buynum}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-form-group justify-between">
+      <text class="text-orange">{{item.desc}}</text>
+      <view>共{{item.totalNum}}件商品 合计：￥{{item.goodsAmount}}</view>
+    </view>
+    <!-- 派件员信息栏 -->
+    <view class="cu-form-group justify-between" wx:if="{{item.state >=2&&item.state!=6&&item.state!=10}}">
+      <text>派件员：{{item.deliveryman}}</text>
+      <text>电话：{{item.deliverymanPhone}}</text>
+    </view>
+    <!-- 待付款的按钮组 -->
+    <view class="cu-form-group justify-end" wx:if="{{item.state == 0}}">
+      <button class="cu-btn round line-balck margin-right-sm" bind:tap="cancelOrder"
+        data-id="{{item.orderId}}">取消订单</button>
+      <button class="cu-btn round line-orange" bind:tap="pay" data-id="{{item.orderId}}">付款</button>
+    </view>
+    <!-- 确认取件按钮组 -->
+    <view class="cu-form-group justify-end" wx:if="{{item.state == 3||item.state == 4}}">
+      <button class="cu-btn round line-black margin-right-sm" bind:tap="call"
+        data-id="{{item.deliverymanPhone}}">联系派件员</button>
+      <button class="cu-btn round line-orange" bind:tap="confirmPicked" data-id="{{item.orderId}}">确认取件</button>
+    </view>
+    <!-- 确认收货按钮组 -->
+    <view class="cu-form-group justify-end" wx:if="{{item.state == 7||item.state == 8}}">
+      <button class="cu-btn round line-black margin-right-sm" bind:tap="call"
+        data-id="{{item.deliverymanPhone}}">联系派件员</button>
+      <button class="cu-btn round line-orange" bind:tap="confirmReceived" data-id="{{item.orderId}}">确认收货</button>
+    </view>
+    <!-- 删除订单按钮组 -->
+    <view class="cu-form-group justify-end" wx:if="{{item.state == 10}}">
+      <button class="cu-btn round line-balck margin-right-sm" bind:tap="deleteOrder"
+        data-id="{{item.orderId}}">删除订单</button>
+    </view>
+  </view>
+</view>

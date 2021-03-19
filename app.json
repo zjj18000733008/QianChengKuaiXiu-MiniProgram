@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/order/order",
+    "pages/car/confirm/choose-address/choose-address",
+    "pages/car/confirm/confirm",
+    "pages/my/address/address",
+    "pages/my/address/edit/edit",
+    "pages/my/address/add/add",
+    "pages/phone-fix/fix-detail/fix-detail",
+    "pages/detail/detail",
+    "pages/phone-fix/phone-fix",
+    "pages/car/car",
+    "pages/my/my",
+    "pages/my/order/order-detail/order-detail",
+    "pages/shop/shop",
+    "pages/shop/goods-classify/goods-classify",
+    "pages/shop/phone/phone",
+    "pages/map/map",
+    "pages/article/article"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-se.png"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "text": "购物车",
+        "iconPath": "images/car.png",
+        "selectedIconPath": "images/car-ce.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-se.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

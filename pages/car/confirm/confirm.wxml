@@ -1,0 +1,72 @@
+<!--pages/car/confirm/confirm.wxml-->
+<page-meta>
+  <navigation-bar title="确认订单" />
+</page-meta>
+
+<view class="location margin-sm shadow-lg" bind:tap="chooseAddress">
+    <view class="cuIcon-locationfill padding-xs icons text-orange"></view>
+    <view class="middle">
+        <view class="title margin-bottom-xs">{{name}} {{phoneNum}}</view>
+        <view class="detail">{{area}} {{streetAddress}}</view>
+        <view class="add" wx:if="{{!name}}" style="font-size:40rpx">添加收货地址</view>
+    </view>
+    <view class="cuIcon-right icons padding-xs"></view>
+</view>
+
+<view class="order margin-sm">
+    <view class="items" wx:for="{{goods}}" wx:key="name">
+        <view class="item-detail">
+            <view class="detail-left">
+                <image src="{{item.surfaceImg}}" mode='aspectFill'></image>
+            </view>
+            <view class="detail-middle">
+                <view class="item-title">{{item.name}}</view>
+                <view class="item-model">{{item.modelName}}</view>
+            </view>
+            <view class="detail-right">
+                <view class="item-price">￥{{item.price}}</view>
+                <view class="item-num text-grey">x{{item.count}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="diliver cu-form-group">
+        <view class="title">配送方式</view>
+        <picker bindchange="PickerChange" value="{{0}}" range="{{picker}}">
+            <view class="picker">
+                {{diliver}}
+            </view>
+        </picker>
+    </view>
+    <view class="serve-time cu-form-group">
+        <view class="title">服务日期</view>
+        <picker mode="date" value="{{startDate}}" start="{{startDate}}" end="{{endDate}}" bindchange="DateChange">
+            <view class="picker">
+                {{date}}
+            </view>
+        </picker>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">服务时间</view>
+        <picker mode="time" value="{{time}}" start="09:00" end="18:00" bindchange="TimeChange">
+            <view class="picker">
+                {{time}}
+            </view>
+        </picker>
+    </view>
+    <view class="note cu-form-group">
+        <view class="title">订单备注</view>
+        <input placeholder="选填，请先与客服协商一致" name="leaveWord" bindinput="changeLeaveWord" style="z-index:0"></input>
+    </view>
+</view>
+
+<!-- 占位元素 -->
+<view style="height:100rpx"></view>
+
+<view class="fix-bottom">
+    <view class="bottom-bar">
+        <text class="text-all">共{{goodsNum}}件，</text>
+        <text>合计：</text>
+        <text class="text-money">￥{{goodsAmount}}</text>
+        <button class="cu-btn round lg bg-orange margin-xs" bind:tap="submitOrder">提交订单</button>
+    </view>
+</view>
